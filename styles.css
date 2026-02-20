@@ -1716,3 +1716,49 @@ ul {
     font-size: 1.2rem;
     color: #555;
 }
+
+/* =========================================
+   DEVELOPER CREDIT
+   ========================================= */
+.developer-credit {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.developer-link {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 2px 0;
+}
+
+.developer-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.developer-link:hover {
+    color: #fff;
+    text-shadow: 0 0 12px rgba(197, 160, 89, 0.5);
+}
+
+.developer-link:hover::after {
+    width: 100%;
+    background-color: #fff;
+}
