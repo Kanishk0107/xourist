@@ -3,54 +3,125 @@
 // Vanilla JS for interactions and animations
 // ========================================
 
-// ========== HERO SLIDER LOGIC ==========
+// ========== POPUP LEAD FORM ==========
 document.addEventListener('DOMContentLoaded', () => {
-    const sliderContainer = document.querySelector('#hero-slider');
-    const slides = sliderContainer ? sliderContainer.querySelectorAll('.hero-slide') : [];
-    const dotsContainer = document.getElementById('hero-dots');
-    const dots = dotsContainer ? dotsContainer.querySelectorAll('.hero-dot') : [];
-    let currentSlide = 0;
-    let slideInterval;
+    const overlay = document.getElementById('popupOverlay');
+    const closeBtn = document.getElementById('popupClose');
+    const form = document.getElementById('popupForm');
 
-    if (slides.length > 0) {
-        // Function to change slide
-        function goToSlide(index) {
-            // Remove active from current
-            slides[currentSlide].classList.remove('active');
-            if (dots.length > 0) dots[currentSlide].classList.remove('active');
-
-            // Update index
-            currentSlide = (index + slides.length) % slides.length;
-
-            // Add active to new
-            slides[currentSlide].classList.add('active');
-            if (dots.length > 0) dots[currentSlide].classList.add('active');
+    if (overlay) {
+        // Only show once per session
+        if (!sessionStorage.getItem('popupShown')) {
+            setTimeout(() => {
+                overlay.classList.add('active');
+            }, 900);
         }
 
-        // Auto slide function
-        function startSlideTimer() {
-            slideInterval = setInterval(() => {
-                goToSlide(currentSlide + 1);
-            }, 2500);
+        // Close on X button
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                overlay.classList.remove('active');
+                sessionStorage.setItem('popupShown', 'true');
+            });
         }
 
-        // Initialize
-        slides[0].classList.add('active');
-        if (dots.length > 0) dots[0].classList.add('active');
-        startSlideTimer();
+        // Close on backdrop click (not on card)
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                overlay.classList.remove('active');
+                sessionStorage.setItem('popupShown', 'true');
+            }
+        });
 
-        // Dot Navigation Click Events
-        if (dots.length > 0) {
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    clearInterval(slideInterval); // Stop auto timer on interaction
-                    goToSlide(index);
-                    startSlideTimer(); // Restart timer
-                });
+        // Handle form submission
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('popup-name').value.trim();
+                const email = document.getElementById('popup-email').value.trim();
+                const mobile = document.getElementById('popup-mobile').value.trim();
+                // Store data (in a real app, send to server)
+                console.log('Lead captured:', { name, email, mobile });
+                // Show brief success then close
+                const btn = form.querySelector('.popup-submit');
+                btn.textContent = '✓ Thank You!';
+                btn.style.background = 'linear-gradient(135deg, #4caf50, #45a049)';
+                setTimeout(() => {
+                    overlay.classList.remove('active');
+                    sessionStorage.setItem('popupShown', 'true');
+                }, 1500);
             });
         }
     }
 });
+
+// ========== CINEMATIC GALLERY SCROLL mapping ==========
+document.addEventListener('DOMContentLoaded', () => {
+    const section = document.querySelector('.gallery-section');
+    const stickyWrapper = document.getElementById('galleryStickyWrapper');
+    const slider = document.getElementById('gallerySlider');
+
+    if (!section || !slider || !stickyWrapper) return;
+
+    let isMobile = window.innerWidth < 768;
+
+    const calcHeight = () => {
+        const sliderWidth = slider.offsetWidth;
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        // The vertical height of the section should be its content width 
+        // minus the viewport width PLUS one full viewport height for pinning.
+        // This ensures the user scrolls vertically the same distance 
+        // the content moves horizontally.
+        const totalHeight = sliderWidth - viewportWidth + viewportHeight;
+        section.style.height = `${totalHeight}px`;
+    };
+
+    // Initialize height on load and resize
+    window.addEventListener('load', calcHeight);
+    window.addEventListener('resize', () => {
+        isMobile = window.innerWidth < 768;
+        calcHeight();
+    });
+
+    const updateGallery = () => {
+        const sectionRect = section.getBoundingClientRect();
+        const stickyRect = stickyWrapper.getBoundingClientRect();
+
+        // Calculate how much we have scrolled into the section (0 to 1)
+        const scrollStart = sectionRect.top;
+        const totalScrollable = section.offsetHeight - window.innerHeight;
+
+        if (scrollStart <= 0 && scrollStart >= -totalScrollable) {
+            // We are inside the sticky range
+            const percentage = Math.abs(scrollStart) / totalScrollable;
+            const maxTranslate = slider.offsetWidth - window.innerWidth;
+            const translate = percentage * maxTranslate;
+
+            // GPU Accelerated translation
+            slider.style.transform = `translate3d(-${translate}px, 0, 0)`;
+        } else if (scrollStart > 0) {
+            // Above section
+            slider.style.transform = `translate3d(0, 0, 0)`;
+        } else {
+            // Below section
+            const maxTranslate = slider.offsetWidth - window.innerWidth;
+            slider.style.transform = `translate3d(-${maxTranslate}px, 0, 0)`;
+        }
+
+        requestAnimationFrame(updateGallery);
+    };
+
+    // Run the animation loop
+    requestAnimationFrame(updateGallery);
+});
+
+// Gallery slider logic moved to CSS animation in styles.css (OBSELETE-REMOVED)
+
+
+
+
 
 // ========== SMOOTH SCROLL NAVIGATION ==========
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

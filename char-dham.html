@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Char Dham Yatra with Xourist - Embark on a sacred journey to Yamunotri, Gangotri, Kedarnath and Badrinath. Curated luxury pilgrimage experiences.">
+    <meta name="keywords" content="Char Dham Yatra, Yamunotri, Gangotri, Kedarnath, Badrinath, pilgrimage India">
+    <title>Char Dham Yatra | Xourist</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ---- Page-specific overrides ---- */
+        .trip-hero {
+            position: relative;
+            height: 85vh;
+            min-height: 550px;
+            background-image: url('assets/Chardham.jpeg');
+            background-size: cover;
+            background-position: center top;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .trip-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.55) 100%);
+        }
+
+        .trip-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .trip-hero-content .eyebrow {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #c5a059;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .trip-hero-content h1 {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1.2rem;
+            line-height: 1.1;
+        }
+
+        .trip-hero-content p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            font-weight: 300;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .trip-body {
+            background: var(--color-bg-body);
+        }
+
+        .trip-intro {
+            padding: 6rem 0 4rem;
+            text-align: center;
+        }
+
+        .trip-intro p {
+            max-width: 720px;
+            margin: 1.5rem auto 0;
+            font-size: 1.15rem;
+            color: #555;
+            line-height: 1.9;
+        }
+
+        /* Dhams Grid */
+        .dhams-section {
+            padding: 3rem 0 6rem;
+        }
+
+        .dhams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .dham-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dham-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.14);
+        }
+
+        .dham-icon-box {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #0f2c3e, #1a4a6b);
+            color: #c5a059;
+        }
+
+        .dham-info {
+            padding: 1.8rem;
+        }
+
+        .dham-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--color-primary);
+        }
+
+        .dham-info p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Highlights */
+        .highlights-section {
+            background: var(--color-primary);
+            padding: 6rem 0;
+            color: #fff;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .highlight-item i {
+            font-size: 2.5rem;
+            color: #c5a059;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-item h4 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-item p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 7rem 0;
+            text-align: center;
+            background: url('assets/Chardham.jpeg') center/cover no-repeat fixed;
+            position: relative;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 20, 30, 0.82);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            color: #fff;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .trip-hero {
+                height: 70vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.jpg" alt="Xourist Logo" style="height: 40px; width: auto; border-radius: 5px;">
+                <span class="logo-text" style="color: var(--color-primary);">XOURIST</span>
+            </a>
+            <a href="index.html" class="btn btn-outline" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;">← Back to
+                Home</a>
+        </div>
+    </nav>
+
+    <main id="main-content">
+
+        <!-- Hero -->
+        <div class="trip-hero">
+            <div class="trip-hero-content">
+                <span class="eyebrow">Sacred Pilgrimage</span>
+                <h1>Char Dham Yatra</h1>
+                <p>A divine journey to four of the holiest shrines in the Indian Himalayas</p>
+            </div>
+        </div>
+
+        <div class="trip-body">
+
+            <!-- Intro -->
+            <section class="trip-intro container">
+                <span class="text-gold uppercase-spaced">The Sacred Circuit</span>
+                <h2 class="section-title mt-3">Four Shrines, One Soul</h2>
+                <p>The Char Dham Yatra is one of the most revered pilgrimage circuits in Hinduism, encompassing four
+                    sacred shrines nestled in the Garhwal Himalayas of Uttarakhand. Xourist curates this deeply
+                    spiritual
+                    journey with the comfort, care, and reverence it deserves — ensuring your path to the divine is
+                    peaceful and profound.</p>
+            </section>
+
+            <!-- Four Dhams -->
+            <section class="dhams-section">
+                <div class="container">
+                    <div class="section-header text-center mb-5">
+                        <h2 class="section-title">The Four Sacred Dhams</h2>
+                        <p class="section-subtitle">Each shrine holds a unique spiritual significance</p>
+                    </div>
+                    <div class="dhams-grid">
+                        <div class="dham-card">
+                            <div class="dham-icon-box">
+                                <i class="fas fa-water"></i>
+                            </div>
+                            <div class="dham-info">
+                                <h3>Yamunotri</h3>
+                                <p>The source of the sacred Yamuna River and seat of Goddess Yamuna. Trek through lush
+                                    forests to reach this pristine shrine in the western Garhwal Himalayas.</p>
+                            </div>
+                        </div>
+                        <div class="dham-card">
+                            <div class="dham-icon-box">
+                                <i class="fas fa-water"></i>
+                            </div>
+                            <div class="dham-info">
+                                <h3>Gangotri</h3>
+                                <p>The origin of the holy Ganga River, where the goddess Ganga is said to have first
+                                    touched the earth. A breathtaking temple at an altitude of 3,048 metres.</p>
+                            </div>
+                        </div>
+                        <div class="dham-card">
+                            <div class="dham-icon-box">
+                                <i class="fas fa-gopuram"></i>
+                            </div>
+                            <div class="dham-info">
+                                <h3>Kedarnath</h3>
+                                <p>One of the twelve Jyotirlingas of Lord Shiva, situated near the Mandakini River.
+                                    This ancient temple stands at 3,583 metres amidst snow-capped peaks.</p>
+                            </div>
+                        </div>
+                        <div class="dham-card">
+                            <div class="dham-icon-box">
+                                <i class="fas fa-om"></i>
+                            </div>
+                            <div class="dham-info">
+                                <h3>Badrinath</h3>
+                                <p>Dedicated to Lord Vishnu, this temple is one of the holiest sites in Hinduism. Set
+                                    between the Nar and Narayan mountain ranges at 3,133 metres.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Highlights -->
+            <section class="highlights-section">
+                <div class="container text-center">
+                    <span class="text-gold uppercase-spaced">Why Choose Xourist</span>
+                    <h2 class="section-title text-white mt-3">The Xourist Difference</h2>
+                    <div class="highlights-grid">
+                        <div class="highlight-item">
+                            <i class="fas fa-route"></i>
+                            <h4>Expert-Led Itinerary</h4>
+                            <p>Carefully planned routes avoiding peak rush, with ample time at each shrine</p>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-bed"></i>
+                            <h4>Comfortable Stays</h4>
+                            <p>Handpicked accommodation — clean, comfortable, and close to the temples</p>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-user-tie"></i>
+                            <h4>Personal Guide</h4>
+                            <p>Experienced spiritual and trekking guides ensure a safe and meaningful journey</p>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-heart"></i>
+                            <h4>Small Group Size</h4>
+                            <p>Intimate groups for a personalized, immersive spiritual experience</p>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-calendar-check"></i>
+                            <h4>Priority Darshan</h4>
+                            <p>Pre-arranged temple visits to minimize wait times during peak season</p>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-leaf"></i>
+                            <h4>Sustainable Travel</h4>
+                            <p>We respect the sanctity of these shrines and travel with minimal footprint</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="cta-content container">
+                <span
+                    style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px; color: #c5a059; font-weight: 600; display: block; margin-bottom: 1rem;">Book
+                    Your Sacred Journey</span>
+                <h2>Begin Your Char Dham Yatra</h2>
+                <p>Seats are limited each season. Reach out to secure your spot.</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/917678501937?text=Hello%20Xourist,%20I'm%20interested%20in%20Char%20Dham%20Yatra.%20Please%20share%20details.%0A%0AName:%20%0ADates:%20%0ATravelers:%20"
+                        target="_blank" class="btn btn-gold-premium">
+                        <i class="fab fa-whatsapp" style="margin-right: 0.5rem;"></i> Book on WhatsApp
+                    </a>
+                    <a href="index.html#contact" class="btn btn-gold-outline">Enquire Now</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer style="background-color: var(--color-secondary); color: rgba(255,255,255,0.6); padding: 4rem 0;">
+        <div class="container">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <img src="assets/logo.jpg" alt="Xourist Logo"
+                        style="height: 50px; width: auto; border-radius: 5px;">
+                    <div>
+                        <h3 style="color: #fff; font-size: 1.5rem; letter-spacing: 2px;">XOURIST</h3>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Luxury Slow Travel in India</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 2rem;">
+                    <a href="https://www.instagram.com/xouristindia/" target="_blank" rel="noopener"
+                        style="color: rgba(255,255,255,0.8); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="terms.html" style="color: rgba(255,255,255,0.6); text-decoration: none;">Terms</a>
+                    <a href="privacy.html" style="color: rgba(255,255,255,0.6); text-decoration: none;">Privacy
+                        Policy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 Xourist. All rights reserved.
+                <div class="developer-credit">
+                    Website Developed By <a href="https://www.linkedin.com/in/kanishk-a-bhardwaj/" target="_blank"
+                        class="developer-link">Kanishk BhardwaJ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/917678501937?text=Hello%20Xourist,%20I'm%20interested%20in%20Char%20Dham%20Yatra."
+        class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</body>
+
+</html>

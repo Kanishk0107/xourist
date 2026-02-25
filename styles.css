@@ -425,9 +425,9 @@ ul {
    ========================================= */
 /* Floating Hero Layout */
 .hero-wrapper {
-    padding: 20px;
+    padding: 30px;
+    /* Increased for desktop premium feel */
     background: #000;
-    /* Seamless dark background behind floating card */
 }
 
 /* Rounded Floating Hero */
@@ -456,34 +456,17 @@ ul {
     z-index: 1;
 }
 
-.hero-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
+.hero-video {
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
+    object-fit: cover;
+    filter: blur(6px);
+    /* Balanced blur for cinematic focus */
     transform: scale(1.05);
-    /* Slight zoom for premium feel */
-    animation: subtleZoom 20s infinite alternate;
+    /* Prevents blurred edges from showing white */
 }
 
-.hero-slide.active {
-    opacity: 1;
-}
 
-@keyframes subtleZoom {
-    from {
-        transform: scale(1.05);
-    }
-
-    to {
-        transform: scale(1.15);
-    }
-}
 
 .hero-overlay {
     position: absolute;
@@ -525,57 +508,38 @@ ul {
     opacity: 0.95;
 }
 
-/* Hero Navigation Dots */
-.hero-dots {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 12px;
-    z-index: 4;
-}
 
-.hero-dot {
-    width: 10px;
-    height: 10px;
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.hero-dot:hover {
-    background-color: rgba(255, 255, 255, 0.8);
-    transform: scale(1.2);
-}
-
-.hero-dot.active {
-    background-color: #ffffff;
-    transform: scale(1.3);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    border-color: #ffffff;
-}
 
 /* Mobile Adjustments for Hero */
 @media (max-width: 768px) {
     .hero-wrapper {
-        padding: 10px;
+        padding: 0;
+        /* Edge to edge on mobile */
     }
 
     .hero {
-        border-radius: 20px;
-        height: 85vh;
+        border-radius: 0;
+        /* Full screen feel */
+        height: 100vh;
+        /* Full viewport height */
+        min-height: 500px;
     }
 
     .hero-title {
-        font-size: 2.8rem;
-        word-wrap: break-word;
+        font-size: 2.4rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
     }
 
     .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        margin-bottom: 3rem;
+        padding: 0 1rem;
+    }
+
+    .hero-buttons-dual {
+        gap: 1.5rem;
+        /* More space between buttons on mobile */
     }
 }
 
@@ -1761,4 +1725,323 @@ ul {
 .developer-link:hover::after {
     width: 100%;
     background-color: #fff;
+}
+
+/* =========================================
+   HERO DUAL BUTTONS
+   ========================================= */
+.hero-buttons-dual {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Gold Outline variant for second hero button */
+.btn-gold-outline {
+    background: transparent;
+    color: #fff;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    border: 2px solid #c5a059;
+    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.25);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.btn-gold-outline:hover {
+    background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #c5a059 100%);
+    color: #0f2c3e;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(197, 160, 89, 0.5);
+    text-shadow: none;
+}
+
+/* =========================================
+   GALLERY SECTION
+   ========================================= */
+.gallery-section {
+    position: relative;
+    padding: 0;
+    background: var(--color-bg-body);
+    overflow: visible;
+    /* Needed for sticky content to stay visible as parent height changes */
+}
+
+.gallery-slider-wrapper {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    will-change: transform;
+}
+
+.gallery-slider {
+    display: flex;
+    gap: 3vw;
+    padding: 0 10vw;
+    width: max-content;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    /* Subtle smoothing */
+    cursor: grab;
+}
+
+.gallery-slider:active {
+    cursor: grabbing;
+}
+
+.gallery-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery-item {
+    position: relative;
+    min-width: 450px;
+    height: 65vh;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    flex-shrink: 0;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-item-overlay {
+    display: none;
+}
+
+/* Gallery removed navigation buttons styles replaced by auto-scroll */
+
+.gallery-prev {
+    left: 1rem;
+}
+
+.gallery-next {
+    right: 1rem;
+}
+
+@media (max-width: 768px) {
+    .gallery-item {
+        min-width: 260px;
+        height: 340px;
+    }
+
+    .gallery-slider {
+        padding: 1rem 4rem;
+    }
+
+    .gallery-nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+
+    .hero-buttons-dual {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+        width: 100%;
+    }
+
+    .btn-gold-premium,
+    .btn-gold-outline {
+        width: 85%;
+        /* Wider buttons for mobile touch targets */
+        padding: 1.1rem 2rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* =========================================
+   POPUP LEAD CAPTURE FORM
+   ========================================= */
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 20, 30, 0.75);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    max-width: 460px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+    transform: translateY(30px) scale(0.96);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.popup-overlay.active .popup-card {
+    transform: translateY(0) scale(1);
+}
+
+.popup-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: #f5f5f5;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.popup-close:hover {
+    background: var(--color-primary);
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+.popup-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.popup-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-accent);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.popup-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.popup-subtitle {
+    font-size: 0.95rem;
+    color: #777;
+    line-height: 1.6;
+}
+
+.popup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+.popup-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.popup-field label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+}
+
+.popup-field input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1.5px solid #e5e5e5;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: #333;
+    background: #fafafa;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+
+.popup-field input:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
+    background: #fff;
+}
+
+.popup-submit {
+    background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #c5a059 100%);
+    color: #0f2c3e;
+    border: none;
+    padding: 1rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
+    margin-top: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.popup-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(197, 160, 89, 0.6);
+}
+
+@media (max-width: 520px) {
+    .popup-card {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .popup-title {
+        font-size: 1.6rem;
+    }
 }

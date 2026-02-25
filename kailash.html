@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Kailash Mansarovar Yatra with Xourist - A transformative pilgrimage to Mount Kailash and Lake Mansarovar, the abode of Lord Shiva. Curated spiritual journeys.">
+    <meta name="keywords" content="Kailash Mansarovar Yatra, Mount Kailash, Lake Mansarovar, Tibet, pilgrimage">
+    <title>Kailash Mansarovar Yatra | Xourist</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ---- Page-specific overrides ---- */
+        .trip-hero {
+            position: relative;
+            height: 85vh;
+            min-height: 550px;
+            background-image: url('assets/kailash.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .trip-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.65) 100%);
+        }
+
+        .trip-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .trip-hero-content .eyebrow {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #c5a059;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .trip-hero-content h1 {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            margin-bottom: 1.2rem;
+            line-height: 1.1;
+        }
+
+        .trip-hero-content p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            font-weight: 300;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Intro */
+        .trip-intro {
+            padding: 6rem 0 4rem;
+            text-align: center;
+        }
+
+        .trip-intro p {
+            max-width: 720px;
+            margin: 1.5rem auto 0;
+            font-size: 1.15rem;
+            color: #555;
+            line-height: 1.9;
+        }
+
+        /* Journey Stages */
+        .journey-section {
+            padding: 3rem 0 6rem;
+            background: var(--color-bg-body);
+        }
+
+        .journey-timeline {
+            margin-top: 3.5rem;
+            position: relative;
+        }
+
+        .journey-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            top: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, #c5a059, transparent);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 3rem;
+            align-items: flex-start;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-num {
+            min-width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d4af37, #c5a059);
+            color: #0f2c3e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+            margin: 0 auto;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: #fff;
+            border-radius: 16px;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.4rem;
+            color: var(--color-primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-content p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+
+        /* Essentials */
+        .essentials-section {
+            background: var(--color-primary);
+            padding: 6rem 0;
+        }
+
+        .essentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .essential-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            padding: 2rem;
+            text-align: center;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .essential-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #c5a059;
+        }
+
+        .essential-card i {
+            font-size: 2.2rem;
+            color: #c5a059;
+            margin-bottom: 1rem;
+        }
+
+        .essential-card h4 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .essential-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 7rem 0;
+            text-align: center;
+            background: url('assets/spiritual-1.jpg') center/cover no-repeat fixed;
+            position: relative;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(8, 15, 25, 0.85);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            color: #fff;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Subsidy Section */
+        .subsidy-section {
+            padding: 6rem 0;
+            background: #fff;
+        }
+
+        .subsidy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .subsidy-card {
+            background: #fdfbf7;
+            border: 1px solid #f1ece1;
+            border-radius: 20px;
+            padding: 3.5rem;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s ease;
+        }
+
+        .subsidy-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(197, 160, 89, 0.1);
+            border-color: #c5a059;
+        }
+
+        .subsidy-card .state-label {
+            position: absolute;
+            top: 2rem;
+            right: 2.5rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #c5a059;
+            font-weight: 700;
+        }
+
+        .subsidy-amount {
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .subsidy-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+            color: var(--color-primary);
+            line-height: 1.3;
+        }
+
+        .subsidy-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .subsidy-steps {
+            list-style: none;
+            padding: 0;
+        }
+
+        .subsidy-steps li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .subsidy-steps li::before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #c5a059;
+        }
+
+        .subsidy-docs {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .subsidy-docs h5 {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .doc-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .doc-tag {
+            background: #fff;
+            border: 1px solid #e5dfd0;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: #777;
+        }
+
+        @media (max-width: 992px) {
+            .subsidy-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .trip-hero {
+                height: 70vh;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .journey-timeline::before {
+                display: none;
+            }
+
+            .subsidy-card {
+                padding: 2.5rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.jpg" alt="Xourist Logo" style="height: 40px; width: auto; border-radius: 5px;">
+                <span class="logo-text" style="color: var(--color-primary);">XOURIST</span>
+            </a>
+            <a href="index.html" class="btn btn-outline" style="padding: 0.5rem 1.5rem; font-size: 0.8rem;">← Back to
+                Home</a>
+        </div>
+    </nav>
+
+    <main id="main-content">
+
+        <!-- Hero -->
+        <div class="trip-hero">
+            <div class="trip-hero-content">
+                <span class="eyebrow">Ultimate Pilgrimage</span>
+                <h1>Kailash Mansarovar</h1>
+                <p>Journey to the roof of the world — the sacred abode of Lord Shiva</p>
+            </div>
+        </div>
+
+        <div style="background: var(--color-bg-body);">
+
+            <!-- Intro -->
+            <section class="trip-intro container">
+                <span class="text-gold uppercase-spaced">Axis Mundi</span>
+                <h2 class="section-title mt-3">Where Heaven Meets Earth</h2>
+                <p>Mount Kailash, rising to 6,638 metres in the Tibetan plateau, is considered the most sacred mountain
+                    in the world by Hindus, Buddhists, Jains, and Bön practitioners. A circumambulation (Parikrama)
+                    of this holy peak and a dip in the pristine Lake Mansarovar is believed to cleanse the sins of a
+                    lifetime. Xourist guides your spirit along this extraordinary path with care, expertise, and
+                    reverence.</p>
+            </section>
+
+            <!-- Journey Stages -->
+            <section class="journey-section">
+                <div class="container">
+                    <div class="section-header text-center">
+                        <span class="text-gold uppercase-spaced">The Sacred Path</span>
+                        <h2 class="section-title mt-3">Key Stages of the Yatra</h2>
+                    </div>
+                    <div class="journey-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-num">1</div>
+                            <div class="timeline-content">
+                                <h3>Kathmandu, Nepal</h3>
+                                <p>Your journey begins in the vibrant city of Kathmandu — a cultural and spiritual hub.
+                                    We handle permits, acclimatization, and briefings here before entering Tibet.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-num">2</div>
+                            <div class="timeline-content">
+                                <h3>Crossing into Tibet</h3>
+                                <p>Cross the Friendship Bridge at Gyirong border and begin the ascent onto the Tibetan
+                                    plateau — one of the most dramatic landscapes on Earth, stretching endlessly under
+                                    boundless skies.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-num">3</div>
+                            <div class="timeline-content">
+                                <h3>Lake Mansarovar</h3>
+                                <p>At an altitude of 4,590 metres, the turquoise waters of Lake Mansarovar are said to
+                                    have been created in the mind of Lord Brahma. Taking a holy dip here is among the
+                                    most spiritually significant acts of the entire Yatra.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-num">4</div>
+                            <div class="timeline-content">
+                                <h3>Kailash Parikrama</h3>
+                                <p>The 52 km circumambulation of Mount Kailash across three days is the centrepiece of
+                                    the journey. Crossing the Dolma La Pass at 5,630 metres is both a physical
+                                    challenge and a deeply transcendent experience.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-num">5</div>
+                            <div class="timeline-content">
+                                <h3>Return & Reflection</h3>
+                                <p>Descend back to Kathmandu carrying the peace and transformation of the pilgrimage.
+                                    Xourist ensures a comfortable return journey with ample time for rest and
+                                    reflection.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Essentials -->
+            <section class="essentials-section">
+                <div class="container text-center">
+                    <span class="text-gold uppercase-spaced">Be Prepared</span>
+                    <h2 class="section-title text-white mt-3">Journey Essentials</h2>
+                    <div class="essentials-grid">
+                        <div class="essential-card">
+                            <i class="fas fa-mountain"></i>
+                            <h4>Altitude: 4,590–5,630m</h4>
+                            <p>High altitude acclimatization is critical and managed throughout</p>
+                        </div>
+                        <div class="essential-card">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h4>Best Season: May–Oct</h4>
+                            <p>We operate during the approved pilgrimage window each year</p>
+                        </div>
+                        <div class="essential-card">
+                            <i class="fas fa-passport"></i>
+                            <h4>Permits Required</h4>
+                            <p>Tibet Travel Permit, Alien Travel Permit — all handled by Xourist</p>
+                        </div>
+                        <div class="essential-card">
+                            <i class="fas fa-heartbeat"></i>
+                            <h4>Physical Fitness</h4>
+                            <p>Moderate to high fitness level required. Medical clearance recommended</p>
+                        </div>
+                        <div class="essential-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Travel Insurance</h4>
+                            <p>Comprehensive medical and evacuation insurance is mandatory</p>
+                        </div>
+                        <div class="essential-card">
+                            <i class="fas fa-users"></i>
+                            <h4>Group Size: 8–14</h4>
+                            <p>Small intimate groups ensure safety and a personal experience</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Government Subsidy Section -->
+            <section class="subsidy-section">
+                <div class="container">
+                    <div class="section-header text-center">
+                        <span class="text-gold uppercase-spaced">Financial Support</span>
+                        <h2 class="section-title mt-3">Government Subsidies</h2>
+                        <p style="max-width: 700px; margin: 1.5rem auto 0; color: #666; line-height: 1.8;">
+                            Supporting your spiritual call through state-sponsored assistance. Many Indian states offer
+                            significant subsidies to pilgrims completing the Kailash Mansarovar Yatra.
+                        </p>
+                    </div>
+
+                    <div class="subsidy-grid">
+                        <!-- UP State -->
+                        <div class="subsidy-card">
+                            <span class="state-label">Uttar Pradesh</span>
+                            <span class="subsidy-amount">₹ 1,00,000</span>
+                            <h3>Directorate of Religious Affairs, U.P.</h3>
+                            <p>Established to support devotees, the UP Government provides a one-time lifetime subsidy
+                                to verified pilgrims of the state who have successfully completed the Yatra.</p>
+
+                            <ul class="subsidy-steps">
+                                <li><strong>Apply Online:</strong> Register at updharmarthkarya.in within 90 days of
+                                    completion.</li>
+                                <li><strong>Documentation:</strong> Submit Yatra certificate, VISA copy, and banking
+                                    details for verification.</li>
+                                <li><strong>Direct Transfer:</strong> Once the bill is passed, the amount is credited
+                                    directly to your bank account via DBT.</li>
+                            </ul>
+
+                            <div class="subsidy-docs">
+                                <h5>Required Documents (Scanned)</h5>
+                                <div class="doc-tags">
+                                    <span class="doc-tag">Aadhaar Card</span>
+                                    <span class="doc-tag">PAN Card</span>
+                                    <span class="doc-tag">Domicile Certificate</span>
+                                    <span class="doc-tag">Yatra Proof/Visa</span>
+                                    <span class="doc-tag">Bank Passbook</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rajasthan State -->
+                        <div class="subsidy-card">
+                            <span class="state-label">Rajasthan</span>
+                            <span class="subsidy-amount">₹ 1,00,000</span>
+                            <h3>Devasthan Department, Rajasthan</h3>
+                            <p>Under the ‘Assistance to devotees for Kailash Mansarovar Yatra’ scheme, the Rajasthan
+                                government supports up to 100 pilgrims annually to encourage spiritual activities.</p>
+
+                            <ul class="subsidy-steps">
+                                <li><strong>Application window:</strong> Official portal opens for grants usually from
+                                    June to September.</li>
+                                <li><strong>Selection Process:</strong> If applicants exceed the 100-pilgrim quota, a
+                                    computerized lucky draw is conducted.</li>
+                                <li><strong>Verification:</strong> Applicants must appear with original documents at the
+                                    Assistant Commissioner's Office.</li>
+                            </ul>
+
+                            <div class="subsidy-docs">
+                                <h5>Required Documents</h5>
+                                <div class="doc-tags">
+                                    <span class="doc-tag">MEA Selection Letter</span>
+                                    <span class="doc-tag">Yatra Completion Cert</span>
+                                    <span class="doc-tag">Printed Form</span>
+                                    <span class="doc-tag">Rajasthan Domicile</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p
+                        style="text-align: center; margin-top: 3rem; font-size: 0.9rem; color: #888; font-style: italic;">
+                        Note: Official guidelines and document requirements are subject to change by the respective
+                        Departments of Religious Affairs. We recommend checking updated portals for the latest
+                        notifications.
+                    </p>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="cta-content container">
+                <span
+                    style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px; color: #c5a059; font-weight: 600; display: block; margin-bottom: 1rem;">Once
+                    in a Lifetime Journey</span>
+                <h2>Begin Your Kailash Yatra</h2>
+                <p>Limited permits available. Contact us early to secure your place on this sacred journey.</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/917678501937?text=Hello%20Xourist,%20I'm%20interested%20in%20Kailash%20Mansarovar%20Yatra.%20Please%20share%20details.%0A%0AName:%20%0APreferred%20Year:%20%0ATravelers:%20"
+                        target="_blank" class="btn btn-gold-premium">
+                        <i class="fab fa-whatsapp" style="margin-right: 0.5rem;"></i> Book on WhatsApp
+                    </a>
+                    <a href="index.html#contact" class="btn btn-gold-outline">Enquire Now</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer style="background-color: var(--color-secondary); color: rgba(255,255,255,0.6); padding: 4rem 0;">
+        <div class="container">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <img src="assets/logo.jpg" alt="Xourist Logo"
+                        style="height: 50px; width: auto; border-radius: 5px;">
+                    <div>
+                        <h3 style="color: #fff; font-size: 1.5rem; letter-spacing: 2px;">XOURIST</h3>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Luxury Slow Travel in India</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 2rem;">
+                    <a href="https://www.instagram.com/xouristindia/" target="_blank" rel="noopener"
+                        style="color: rgba(255,255,255,0.8); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="terms.html" style="color: rgba(255,255,255,0.6); text-decoration: none;">Terms</a>
+                    <a href="privacy.html" style="color: rgba(255,255,255,0.6); text-decoration: none;">Privacy
+                        Policy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 Xourist. All rights reserved.
+                <div class="developer-credit">
+                    Website Developed By <a href="https://www.linkedin.com/in/kanishk-a-bhardwaj/" target="_blank"
+                        class="developer-link">Kanishk BhardwaJ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/917678501937?text=Hello%20Xourist,%20I'm%20interested%20in%20Kailash%20Mansarovar%20Yatra."
+        class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</body>
+
+</html>
