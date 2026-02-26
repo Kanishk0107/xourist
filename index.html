@@ -18,6 +18,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ui-ux-pro-max.css">
 
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -37,17 +38,20 @@
                 <p class="popup-subtitle">Share your details and we'll craft the perfect itinerary for you.</p>
             </div>
             <form class="popup-form" id="popupForm">
+                <button type="button" class="btn-autofill" id="popupAutoFillBtn" aria-label="Auto-fill basic details">
+                    <i class="fas fa-magic"></i> Auto-fill Details
+                </button>
                 <div class="popup-field">
                     <label for="popup-name">Full Name</label>
-                    <input type="text" id="popup-name" placeholder="Your Name" required>
+                    <input type="text" id="popup-name" placeholder="Your Name" autocomplete="name" required>
                 </div>
                 <div class="popup-field">
                     <label for="popup-email">Email Address</label>
-                    <input type="email" id="popup-email" placeholder="you@example.com" required>
+                    <input type="email" id="popup-email" placeholder="you@example.com" autocomplete="email" required>
                 </div>
                 <div class="popup-field">
                     <label for="popup-mobile">Mobile Number</label>
-                    <input type="tel" id="popup-mobile" placeholder="+91 98765 43210" required>
+                    <input type="tel" id="popup-mobile" placeholder="+91 98765 43210" autocomplete="tel" required>
                 </div>
                 <button type="submit" class="popup-submit">Get in Touch &rarr;</button>
             </form>
@@ -252,6 +256,40 @@
             <!-- Cinematic Horizontal Gallery Wrapper -->
             <div class="gallery-slider-wrapper" id="galleryStickyWrapper">
                 <div class="gallery-slider" id="gallerySlider">
+                    <div class="gallery-item">
+                        <img src="assets/Gallery/1000060065.jpg" alt="Gallery Image" loading="lazy" decoding="async">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/Gallery/1000060067.jpg" alt="Gallery Image" loading="lazy" decoding="async">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/Gallery/1000060068.jpg" alt="Gallery Image" loading="lazy" decoding="async">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/Gallery/1000060070.jpg" alt="Gallery Image" loading="lazy" decoding="async">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/Gallery/1000060071.jpg" alt="Gallery Image" loading="lazy" decoding="async">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/Gallery/1000060072.jpg" alt="Gallery Image" loading="lazy" decoding="async">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/Gallery/1000060087.jpg" alt="Gallery Image" loading="lazy" decoding="async">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/Gallery/1000060091.jpg" alt="Gallery Image" loading="lazy" decoding="async">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/Gallery/1000060094.jpg" alt="Gallery Image" loading="lazy" decoding="async">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/Gallery/1000060096.jpg" alt="Gallery Image" loading="lazy" decoding="async">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/Gallery/1000060098.jpg" alt="Gallery Image" loading="lazy" decoding="async">
+                    </div>
+                    <!-- DUPLICATED FOR INFINITE SCROLL -->
                     <div class="gallery-item">
                         <img src="assets/Gallery/1000060065.jpg" alt="Gallery Image" loading="lazy" decoding="async">
                     </div>
@@ -499,21 +537,29 @@
                     </div>
 
                     <!-- Right: Form -->
-                    <div class="contact-form-wrapper-luxury">
+                    <div class="contact-form-wrapper-luxury relative-container">
+                        <div class="form-header-luxury">
+                            <h3 class="luxury-form-title">Craft Your Journey</h3>
+                            <button type="button" class="btn-autofill" id="contactAutoFillBtn"
+                                aria-label="Auto-fill basic details">
+                                <i class="fas fa-fingerprint"></i> Quick Auto-fill
+                            </button>
+                        </div>
                         <form class="contact-form" id="contactForm">
                             <div class="form-group-full">
                                 <label>Full Name</label>
-                                <input type="text" id="name" placeholder="John Doe" required>
+                                <input type="text" id="name" placeholder="John Doe" autocomplete="name" required>
                             </div>
 
                             <div class="form-row-luxury">
                                 <div class="form-group">
                                     <label>Email Address</label>
-                                    <input type="email" id="email" placeholder="john@example.com" required>
+                                    <input type="email" id="email" placeholder="john@example.com" autocomplete="email"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label>Phone Number</label>
-                                    <input type="tel" id="phone" placeholder="+91 9876543210">
+                                    <input type="tel" id="phone" placeholder="+91 9876543210" autocomplete="tel">
                                 </div>
                             </div>
 
@@ -589,6 +635,7 @@
     </a>
 
     <script src="scripts.js"></script>
+    <script src="protection.js"></script>
 </body>
 
 </html>

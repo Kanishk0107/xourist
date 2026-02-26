@@ -16,6 +16,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ui-ux-pro-max.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -239,8 +240,9 @@
 
         <!-- Hero -->
         <div class="trip-hero">
-            <div class="trip-hero-content">
-                <span class="eyebrow">Sacred Pilgrimage</span>
+            <div class="trip-hero-content glass-panel"
+                style="background: rgba(10, 20, 30, 0.4); border: none; padding: 3rem; border-radius: 20px;">
+                <span class="eyebrow text-gradient-gold" style="font-size: 1rem;">Sacred Pilgrimage</span>
                 <h1>Char Dham Yatra</h1>
                 <p>A divine journey to four of the holiest shrines in the Indian Himalayas</p>
             </div>
@@ -263,11 +265,11 @@
             <section class="dhams-section">
                 <div class="container">
                     <div class="section-header text-center mb-5">
-                        <h2 class="section-title">The Four Sacred Dhams</h2>
+                        <h2 class="section-title text-gradient-gold">The Four Sacred Dhams</h2>
                         <p class="section-subtitle">Each shrine holds a unique spiritual significance</p>
                     </div>
                     <div class="dhams-grid">
-                        <div class="dham-card">
+                        <div class="dham-card hover-lift hover-glow">
                             <div class="dham-icon-box">
                                 <i class="fas fa-water"></i>
                             </div>
@@ -277,7 +279,7 @@
                                     forests to reach this pristine shrine in the western Garhwal Himalayas.</p>
                             </div>
                         </div>
-                        <div class="dham-card">
+                        <div class="dham-card hover-lift hover-glow">
                             <div class="dham-icon-box">
                                 <i class="fas fa-water"></i>
                             </div>
@@ -287,7 +289,7 @@
                                     touched the earth. A breathtaking temple at an altitude of 3,048 metres.</p>
                             </div>
                         </div>
-                        <div class="dham-card">
+                        <div class="dham-card hover-lift hover-glow">
                             <div class="dham-icon-box">
                                 <i class="fas fa-gopuram"></i>
                             </div>
@@ -297,7 +299,7 @@
                                     This ancient temple stands at 3,583 metres amidst snow-capped peaks.</p>
                             </div>
                         </div>
-                        <div class="dham-card">
+                        <div class="dham-card hover-lift hover-glow">
                             <div class="dham-icon-box">
                                 <i class="fas fa-om"></i>
                             </div>
@@ -317,32 +319,38 @@
                     <span class="text-gold uppercase-spaced">Why Choose Xourist</span>
                     <h2 class="section-title text-white mt-3">The Xourist Difference</h2>
                     <div class="highlights-grid">
-                        <div class="highlight-item">
+                        <div class="highlight-item hover-lift"
+                            style="padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.03);">
                             <i class="fas fa-route"></i>
                             <h4>Expert-Led Itinerary</h4>
                             <p>Carefully planned routes avoiding peak rush, with ample time at each shrine</p>
                         </div>
-                        <div class="highlight-item">
+                        <div class="highlight-item hover-lift"
+                            style="padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.03);">
                             <i class="fas fa-bed"></i>
                             <h4>Comfortable Stays</h4>
                             <p>Handpicked accommodation — clean, comfortable, and close to the temples</p>
                         </div>
-                        <div class="highlight-item">
+                        <div class="highlight-item hover-lift"
+                            style="padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.03);">
                             <i class="fas fa-user-tie"></i>
                             <h4>Personal Guide</h4>
                             <p>Experienced spiritual and trekking guides ensure a safe and meaningful journey</p>
                         </div>
-                        <div class="highlight-item">
+                        <div class="highlight-item hover-lift"
+                            style="padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.03);">
                             <i class="fas fa-heart"></i>
                             <h4>Small Group Size</h4>
                             <p>Intimate groups for a personalized, immersive spiritual experience</p>
                         </div>
-                        <div class="highlight-item">
+                        <div class="highlight-item hover-lift"
+                            style="padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.03);">
                             <i class="fas fa-calendar-check"></i>
                             <h4>Priority Darshan</h4>
                             <p>Pre-arranged temple visits to minimize wait times during peak season</p>
                         </div>
-                        <div class="highlight-item">
+                        <div class="highlight-item hover-lift"
+                            style="padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.03);">
                             <i class="fas fa-leaf"></i>
                             <h4>Sustainable Travel</h4>
                             <p>We respect the sanctity of these shrines and travel with minimal footprint</p>
@@ -408,9 +416,12 @@
 
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/917678501937?text=Hello%20Xourist,%20I'm%20interested%20in%20Char%20Dham%20Yatra."
-        class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        class="whatsapp-float hover-lift" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <script src="scripts.js"></script>
+    <script src="protection.js"></script>
 </body>
 
 </html>

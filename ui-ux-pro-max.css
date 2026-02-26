@@ -1,0 +1,337 @@
+/* UI/UX Pro Max - Top-Tier Design Aesthetics */
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-bg-dark: rgba(0, 0, 0, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --glow-color: rgba(197, 160, 89, 0.6);
+    --transition-bouncy: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* 1-10: Glassmorphism Utilities */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: var(--glass-shadow);
+}
+
+.glass-panel-dark {
+    background: var(--glass-bg-dark);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5), 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* 11-20: Dynamic Layouts */
+.dynamic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    align-items: stretch;
+}
+
+.dynamic-masonry {
+    column-count: 3;
+    column-gap: 2rem;
+}
+
+@media (max-width: 900px) {
+    .dynamic-masonry {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .dynamic-masonry {
+        column-count: 1;
+    }
+}
+
+/* 21-30: Premium Hover States & Animations */
+.hover-lift {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.2);
+}
+
+.hover-glow {
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 25px var(--glow-color);
+    transform: translateY(-4px);
+}
+
+.image-zoom-container {
+    overflow: hidden;
+    border-radius: inherit;
+}
+
+.image-zoom-container img {
+    transition: transform 0.8s ease;
+}
+
+.hover-lift:hover .image-zoom-container img {
+    transform: scale(1.1);
+}
+
+/* 31-40: Micro-Interactions */
+.btn-magnetic {
+    position: relative;
+    overflow: hidden;
+    transition: color 0.4s ease, border-color 0.4s ease;
+}
+
+.btn-magnetic::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+    top: -50%;
+    left: -50%;
+    transform: scale(0);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+}
+
+.btn-magnetic:hover::after {
+    transform: scale(1);
+}
+
+/* 41-50: Text Gradients & Premium Typography */
+.text-gradient-gold {
+    background: linear-gradient(135deg, #d4af37 0%, #fff2cd 50%, #c5a059 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.text-reveal {
+    overflow: hidden;
+    display: inline-block;
+}
+
+.text-reveal span {
+    display: inline-block;
+    transform: translateY(100%);
+    animation: revealText 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes revealText {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Overrides for existing elements */
+.trek-card {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 20px !important;
+    overflow: hidden;
+    box-shadow: var(--glass-shadow);
+}
+
+.trek-card .card-img img {
+    transition: transform 0.6s ease;
+}
+
+.trek-card:hover .card-img img {
+    transform: scale(1.08);
+}
+
+.contact-form-wrapper-luxury {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15) !important;
+    border-radius: 24px !important;
+}
+
+.nav-menu {
+    background: var(--glass-bg);
+    padding: 10px 30px;
+    border-radius: 50px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gallery-item img {
+    border-radius: 16px;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--color-accent);
+}
+
+/* 51-60 Autofill Luxury Features */
+.form-header-luxury {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding-bottom: 1rem;
+}
+
+.luxury-form-title {
+    font-size: 1.6rem;
+    color: var(--color-primary);
+    margin: 0;
+    font-weight: 600;
+}
+
+.btn-autofill {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 245, 245, 0.9) 100%);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    color: var(--color-primary);
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(10px);
+}
+
+.btn-autofill i {
+    color: var(--color-accent);
+    font-size: 1rem;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-autofill:active {
+    transform: scale(0.96);
+}
+
+.btn-autofill:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    background: #fff;
+}
+
+.btn-autofill:hover i {
+    transform: rotate(15deg) scale(1.1);
+}
+
+/* Form Input Enhancements (Apple-like smooth focus) */
+.contact-form input,
+.contact-form textarea,
+.popup-form input {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    background-color: transparent !important;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.popup-form input:focus {
+    border-bottom-color: var(--color-primary) !important;
+    background: rgba(197, 160, 89, 0.02) !important;
+    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Autofill animation effect */
+.input-autofilled {
+    animation: autofillPulse 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes autofillPulse {
+    0% {
+        background-color: rgba(197, 160, 89, 0.15);
+        transform: scale(0.98);
+        border-bottom-color: var(--color-accent);
+    }
+
+    50% {
+        background-color: rgba(197, 160, 89, 0.05);
+        transform: scale(1.01);
+        border-bottom-color: var(--color-accent);
+    }
+
+    100% {
+        background-color: transparent;
+        transform: scale(1);
+        border-bottom-color: #eee;
+    }
+}
+
+#popupAutoFillBtn {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+/* 61-70 Infinite Scrolling Gallery Marquee */
+.gallery-section {
+    height: auto !important;
+    /* Override sticky height */
+    overflow: hidden;
+    padding-bottom: 4rem;
+}
+
+.gallery-slider-wrapper {
+    position: relative !important;
+    top: auto !important;
+    height: auto !important;
+    display: flex;
+    overflow: hidden;
+    width: 100vw;
+}
+
+.gallery-slider {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    width: max-content;
+    animation: scrollMarquee 40s linear infinite;
+    cursor: grab;
+    will-change: transform;
+}
+
+.gallery-slider:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scrollMarquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 1rem));
+    }
+
+    /* -50% because we duplicate the items once */
+}
+
+.gallery-item {
+    min-width: 350px !important;
+    height: 450px !important;
+    flex-shrink: 0;
+}

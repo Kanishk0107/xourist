@@ -56,66 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ========== CINEMATIC GALLERY SCROLL mapping ==========
-document.addEventListener('DOMContentLoaded', () => {
-    const section = document.querySelector('.gallery-section');
-    const stickyWrapper = document.getElementById('galleryStickyWrapper');
-    const slider = document.getElementById('gallerySlider');
-
-    if (!section || !slider || !stickyWrapper) return;
-
-    let isMobile = window.innerWidth < 768;
-
-    const calcHeight = () => {
-        const sliderWidth = slider.offsetWidth;
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-
-        // The vertical height of the section should be its content width 
-        // minus the viewport width PLUS one full viewport height for pinning.
-        // This ensures the user scrolls vertically the same distance 
-        // the content moves horizontally.
-        const totalHeight = sliderWidth - viewportWidth + viewportHeight;
-        section.style.height = `${totalHeight}px`;
-    };
-
-    // Initialize height on load and resize
-    window.addEventListener('load', calcHeight);
-    window.addEventListener('resize', () => {
-        isMobile = window.innerWidth < 768;
-        calcHeight();
-    });
-
-    const updateGallery = () => {
-        const sectionRect = section.getBoundingClientRect();
-        const stickyRect = stickyWrapper.getBoundingClientRect();
-
-        // Calculate how much we have scrolled into the section (0 to 1)
-        const scrollStart = sectionRect.top;
-        const totalScrollable = section.offsetHeight - window.innerHeight;
-
-        if (scrollStart <= 0 && scrollStart >= -totalScrollable) {
-            // We are inside the sticky range
-            const percentage = Math.abs(scrollStart) / totalScrollable;
-            const maxTranslate = slider.offsetWidth - window.innerWidth;
-            const translate = percentage * maxTranslate;
-
-            // GPU Accelerated translation
-            slider.style.transform = `translate3d(-${translate}px, 0, 0)`;
-        } else if (scrollStart > 0) {
-            // Above section
-            slider.style.transform = `translate3d(0, 0, 0)`;
-        } else {
-            // Below section
-            const maxTranslate = slider.offsetWidth - window.innerWidth;
-            slider.style.transform = `translate3d(-${maxTranslate}px, 0, 0)`;
-        }
-
-        requestAnimationFrame(updateGallery);
-    };
-
-    // Run the animation loop
-    requestAnimationFrame(updateGallery);
-});
+// Removed - Handled by CSS Marquee Animation instead for infinite scrolling.
 
 // Gallery slider logic moved to CSS animation in styles.css (OBSELETE-REMOVED)
 
@@ -235,61 +176,97 @@ if ('IntersectionObserver' in window) {
         rootMargin: '50px'
     });
 
+    const images = document.querySelectorAll('img[data-src]');
     images.forEach(img => imageObserver.observe(img));
 }
 
 
 
+// ========== AUTO-FILL LUXURY FEATURE (NATIVE BROWSER) ==========
+// We rely on HTML5 'autocomplete' attributes and trigger the browser's native saved data.
+const triggerNativeAutofill = (btnId, inputId, originalText, originalIcon) => {
+    const btn = document.getElementById(btnId);
+    const firstInput = document.getElementById(inputId);
+
+    if (btn && firstInput) {
+        btn.addEventListener('click', () => {
+            // Focus the input to trigger the browser's native autofill dropdown
+            firstInput.focus();
+
+            // Add a pulse effect to highlight where the user should look
+            firstInput.classList.remove('input-autofilled');
+            void firstInput.offsetWidth;
+            firstInput.classList.add('input-autofilled');
+
+            // Update button to guide the user
+            btn.innerHTML = '<i class="fas fa-arrow-down"></i> Select from dropdown';
+            btn.style.background = '#f0faea';
+            btn.style.color = '#2e7d32';
+
+            setTimeout(() => {
+                btn.innerHTML = `<i class="${originalIcon}"></i> ${originalText}`;
+                btn.style.background = '';
+                btn.style.color = '';
+            }, 3500);
+        });
+    }
+};
+
+triggerNativeAutofill('contactAutoFillBtn', 'name', 'Quick Auto-fill', 'fas fa-fingerprint');
+triggerNativeAutofill('popupAutoFillBtn', 'popup-name', 'Auto-fill Details', 'fas fa-magic');
+
 // ========== CONTACT FORM VALIDATION & SUBMISSION ==========
 const contactForm = document.getElementById('contactForm');
-const formSuccess = document.getElementById('formSuccess');
+if (contactForm) {
+    const formSuccess = document.getElementById('formSuccess');
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-    // Get form values
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim(); // May be empty if not required in new design, but we kept it.
+        // Get form values
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim(); // May be empty if not required in new design, but we kept it.
 
-    // New fields
-    const phone = document.getElementById('phone') ? document.getElementById('phone').value.trim() : '';
-    const travelers = document.getElementById('travelers') ? document.getElementById('travelers').value : '';
-    const date = document.getElementById('date') ? document.getElementById('date').value : '';
+        // New fields
+        const phone = document.getElementById('phone') ? document.getElementById('phone').value.trim() : '';
+        const travelers = document.getElementById('travelers') ? document.getElementById('travelers').value : '';
+        const date = document.getElementById('date') ? document.getElementById('date').value : '';
 
-    // Basic validation
-    if (!name || !email) {
-        alert('Please fill in your name and email');
-        return;
-    }
+        // Basic validation
+        if (!name || !email) {
+            alert('Please fill in your name and email');
+            return;
+        }
 
-    // Email validation regex
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address');
-        return;
-    }
+        // Email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address');
+            return;
+        }
 
-    // Simulate form submission
-    console.log('Form submitted:', { name, email, phone, travelers, date, message });
+        // Simulate form submission
+        console.log('Form submitted:', { name, email, phone, travelers, date, message });
 
-    // Show success message if element exists
-    if (formSuccess) {
-        formSuccess.style.display = 'block';
-        formSuccess.classList.add('show');
+        // Show success message if element exists
+        if (formSuccess) {
+            formSuccess.style.display = 'block';
+            formSuccess.classList.add('show');
 
-        // Hide success message after 5 seconds
-        setTimeout(() => {
-            formSuccess.classList.remove('show');
-            formSuccess.style.display = 'none';
-        }, 5000);
-    } else {
-        alert('Thank you! Your request has been sent.');
-    }
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                formSuccess.classList.remove('show');
+                formSuccess.style.display = 'none';
+            }, 5000);
+        } else {
+            alert('Thank you! Your request has been sent.');
+        }
 
-    // Reset form
-    contactForm.reset();
-});
+        // Reset form
+        contactForm.reset();
+    });
+}
 
 // ========== CONSOLIDATED SCROLL ANIMATIONS ==========
 const observeElements = () => {
