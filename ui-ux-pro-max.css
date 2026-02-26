@@ -300,8 +300,15 @@
     top: auto !important;
     height: auto !important;
     display: flex;
-    overflow: hidden;
+    overflow-x: auto;
+    /* Changed for manual swapping */
     width: 100vw;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.gallery-slider-wrapper::-webkit-scrollbar {
+    display: none;
 }
 
 .gallery-slider {
@@ -309,13 +316,16 @@
     gap: 2rem;
     padding: 2rem;
     width: max-content;
-    animation: scrollMarquee 40s linear infinite;
     cursor: grab;
     will-change: transform;
 }
 
+.gallery-slider:active {
+    cursor: grabbing;
+}
+
 .gallery-slider:hover {
-    animation-play-state: paused;
+    /* JS will handle pause on hover */
 }
 
 @keyframes scrollMarquee {

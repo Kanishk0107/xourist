@@ -2051,3 +2051,120 @@ ul {
         font-size: 1.6rem;
     }
 }
+
+/* =========================================
+   GLOBAL MOBILE FITMENT FIXES (UI/UX PRO MAX)
+   ========================================= */
+@media (max-width: 768px) {
+
+    /* Critical horizontal overflow fix (avoid 100vw scrollbar bug) */
+    html,
+    body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        position: relative;
+    }
+
+    /* Ensure containers don't break width */
+    .container {
+        width: 100% !important;
+        max-width: 100%;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        box-sizing: border-box;
+    }
+
+    /* Sticky Header alignment & sizing */
+    .nav-container {
+        padding: 0 1rem !important;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        box-sizing: border-box;
+        width: 100% !important;
+    }
+
+    .nav-container .logo-text {
+        font-size: 1.2rem;
+    }
+
+    .nav-container .btn {
+        padding: 0.4rem 0.6rem !important;
+        font-size: 0.7rem !important;
+        white-space: nowrap;
+    }
+
+    /* WhatsApp button overlaying content */
+    .whatsapp-float {
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 22px !important;
+        bottom: 12px !important;
+        right: 12px !important;
+        box-shadow: 0 2px 10px rgba(37, 211, 102, 0.4) !important;
+        animation: none !important;
+        /* Stop pulse to save space */
+    }
+
+    /* Kailash / Char Dham Hero content clutter */
+    .trip-hero-content {
+        padding: 1.5rem 1rem !important;
+        width: 92%;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .trip-hero-content h1 {
+        font-size: 2rem !important;
+    }
+
+    .trip-hero-content p {
+        font-size: 0.95rem !important;
+    }
+
+    /* Kailash Timeline Mobile Alignment */
+    .timeline-content {
+        padding: 1.5rem !important;
+        width: 100%;
+        margin: 0 !important;
+        box-sizing: border-box;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        flex-direction: column !important;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .journey-timeline::before {
+        display: none !important;
+    }
+
+    /* Subsidy cards & general grids squeezing */
+    .subsidy-card {
+        padding: 1.5rem !important;
+        margin: 0 !important;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .dhams-grid,
+    .essentials-grid,
+    .subsidy-grid {
+        grid-template-columns: 1fr !important;
+        padding: 0 !important;
+        margin-top: 1.5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .dham-card,
+    .essential-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
