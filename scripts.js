@@ -341,12 +341,14 @@ window.addEventListener('load', () => {
     if (heroImage) {
         heroImage.style.opacity = '1';
     }
-    // ========== AUTO-SCROLLING GALLERY WITH SWIPE/SWAP ==========
-    document.addEventListener('DOMContentLoaded', () => {
-        const wrapper = document.getElementById('galleryStickyWrapper');
-        const slider = document.getElementById('gallerySlider');
+});
 
-        if (wrapper && slider) {
+// ========== AUTO-SCROLLING GALLERY WITH SWIPE/SWAP ==========
+document.addEventListener('DOMContentLoaded', () => {
+    const wrapper = document.getElementById('galleryStickyWrapper');
+    const slider = document.getElementById('gallerySlider');
+
+    if (wrapper && slider) {
             // Clone items for infinite illusion
             const items = Array.from(slider.children);
             items.forEach(item => {
