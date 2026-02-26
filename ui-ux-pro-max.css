@@ -166,12 +166,26 @@
     border-radius: 24px !important;
 }
 
-.nav-menu {
-    background: var(--glass-bg);
-    padding: 10px 30px;
-    border-radius: 50px;
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+@media (min-width: 993px) {
+    .nav-menu {
+        background: var(--glass-bg);
+        padding: 10px 30px;
+        border-radius: 50px;
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
+
+@media (max-width: 992px) {
+    .nav-menu {
+        background: #080c13 !important;
+        /* Completely solid premium dark navy/black */
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-radius: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
 }
 
 .gallery-item img {
@@ -324,9 +338,7 @@
     cursor: grabbing;
 }
 
-.gallery-slider:hover {
-    /* JS will handle pause on hover */
-}
+
 
 @keyframes scrollMarquee {
     0% {
