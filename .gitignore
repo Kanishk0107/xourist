@@ -1,19 +1,8 @@
-# OS generated files
+node_modules/
+dist/
+dist-ssr/
+*.local
+.env
+.env.*.local
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Backup files
-*.bak
-
-# Tool generated files
-.gemini/
-.agent/
-brain/
-
-# Local server logs
-*.log
+.vite/
