@@ -25,9 +25,7 @@
             position: relative;
             height: 85vh;
             min-height: 550px;
-            background-image: url('assets/kailash_BG.jpg');
-            background-size: cover;
-            background-position: center;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -410,6 +408,10 @@
 
         <!-- Hero -->
         <div class="trip-hero">
+            <video autoplay muted loop playsinline
+                style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; object-fit: cover; transform: translate(-50%, -50%);">
+                <source src="assets/Kailash-bg.mp4" type="video/mp4">
+            </video>
             <div class="trip-hero-content glass-panel"
                 style="background: rgba(10, 20, 30, 0.4); border: none; padding: 3rem; border-radius: 20px;">
                 <span class="eyebrow text-gradient-gold" style="font-size: 1rem;">Ultimate Pilgrimage</span>
