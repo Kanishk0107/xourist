@@ -357,3 +357,116 @@
     height: 450px !important;
     flex-shrink: 0;
 }
+
+/* 71-100 Luxury Custom Cursor & Page Transitions */
+body {
+    cursor: url('../assets/Cursor/Old\ Roblox--pointer--SweezyCursors.cur'), auto !important;
+}
+
+a,
+button,
+input,
+textarea,
+.interactive,
+.btn {
+    cursor: url('../assets/Cursor/Old\ Roblox--cursor--SweezyCursors.cur'), pointer !important;
+}
+
+/* Page entrance animations */
+body {
+    opacity: 0;
+    animation: pageFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pageFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+        filter: blur(5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* 101-120 Spotlight Interactive Backgrounds */
+.spotlight-interactive {
+    position: relative;
+    background-color: #0c0c0c !important;
+    background-image: none !important;
+    overflow: hidden;
+}
+
+.spotlight-dynamic-bgs {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.spotlight-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s ease;
+    will-change: opacity, transform;
+}
+
+/* Default state morphing */
+.spotlight-interactive .bg-default {
+    opacity: 1;
+    animation: spotlightMorphFade 16s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes spotlightMorphFade {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Hover logic using :has() for modern interactive hover reveal */
+.spotlight-interactive:has(.feature-yamunotri:hover) .bg-yamunotri,
+.spotlight-interactive:has(.feature-gangotri:hover) .bg-gangotri,
+.spotlight-interactive:has(.feature-kedarnath:hover) .bg-kedarnath,
+.spotlight-interactive:has(.feature-badrinath:hover) .bg-badrinath {
+    opacity: 1;
+    transform: scale(1.05);
+    /* Slight luxurious zoom */
+}
+
+/* Hide default when any feature is hovered */
+.spotlight-interactive:has(.spotlight-feature:hover) .bg-default {
+    opacity: 0;
+}
+
+/* Ensure content stays above backgrounds */
+.spotlight-overlay,
+.spotlight-content {
+    position: relative;
+    z-index: 2;
+}
+
+.spotlight-feature {
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.spotlight-feature:hover {
+    background: rgba(255, 255, 255, 0.12);
+}

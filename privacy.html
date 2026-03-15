@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Privacy & Booking Policy for Xourist - Luxury Slow Travel in India.">
+    <title>Privacy & Policies | Xourist</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="./src/assets/logo.jpg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./src/styles/styles.css">
+    <link rel="stylesheet" href="./src/styles/ui-ux-pro-max.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: var(--color-bg-body);
+            background-image: radial-gradient(circle at 50% 0%, rgba(197, 160, 89, 0.05) 0%, transparent 70%);
+        }
+
+        .policy-hero {
+            padding: 12rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .policy-hero h1 {
+            font-size: clamp(3rem, 5vw + 1rem, 4.5rem);
+            margin-bottom: 1rem;
+            font-family: var(--font-heading);
+            letter-spacing: -1px;
+        }
+
+        .policy-hero p {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        .policy-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            padding: 0 2rem 6rem;
+        }
+
+        .policy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .policy-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .policy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37, #fff2cd, #c5a059);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .policy-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .policy-icon {
+            font-size: 2.2rem;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .policy-card h3 {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            font-family: var(--font-heading);
+            margin-bottom: 1.2rem;
+        }
+
+        .policy-card ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            flex-grow: 1;
+        }
+
+        .policy-card ul li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 1rem;
+            color: #4a4a4a;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .policy-card ul li::before {
+            content: '♦';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-size: 0.8rem;
+            top: 3px;
+        }
+
+        .acceptance-banner {
+            background: linear-gradient(135deg, #0f2c3e 0%, #1a4a6b 100%);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(15, 44, 62, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+        }
+
+        .acceptance-banner::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(197, 160, 89, 0.15);
+            border-radius: 50%;
+            filter: blur(20px);
+        }
+
+        .acceptance-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(197, 160, 89, 0.15);
+            border-radius: 50%;
+            filter: blur(20px);
+        }
+
+        .acceptance-banner h2 {
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .acceptance-banner p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.15rem;
+            font-weight: 300;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .policy-hero {
+                padding: 10rem 1rem 3rem;
+            }
+
+            .policy-card {
+                padding: 2rem;
+            }
+
+            .acceptance-banner {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar" style="background: rgba(255, 255, 255, 0.95);">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="./src/assets/logo.jpg" alt="Xourist Logo"
+                    style="height: 40px; width: auto; border-radius: 5px; margin-right: 10px;">
+                <span class="logo-text" style="color: var(--color-primary);">XOURIST</span>
+            </a>
+            <a href="index.html" class="btn btn-outline hover-lift"
+                style="padding: 0.6rem 1.8rem; font-size: 0.85rem; border-color: rgba(15, 44, 62, 0.2);">Back to
+                Home</a>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="policy-hero reveal-on-scroll">
+            <h1 class="text-gradient-gold">Xourist Experiences</h1>
+            <p>Privacy & Booking Policies</p>
+        </div>
+
+        <div class="policy-wrapper">
+            <div class="policy-grid reveal-on-scroll">
+
+                <!-- Card 1 -->
+                <div class="policy-card hover-lift hover-glow">
+                    <div class="policy-icon"><i class="fas fa-wallet"></i></div>
+                    <h3>1. Booking & Payment Policy</h3>
+                    <ul>
+                        <li>30% advance payment is required to confirm the booking.</li>
+                        <li>Remaining amount must be paid 15 days before departure.</li>
+                        <li>Bookings without advance payment will not be confirmed.</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="policy-card hover-lift hover-glow" style="transition-delay: 0.1s;">
+                    <div class="policy-icon"><i class="fas fa-ban"></i></div>
+                    <h3>2. Cancellation Policy</h3>
+                    <ul>
+                        <li>30 days before departure &ndash; 20% cancellation charges.</li>
+                        <li>15&ndash;29 days before departure &ndash; 50% cancellation charges.</li>
+                        <li>Less than 15 days &ndash; No refund.</li>
+                        <li>No refund for no-show or early departure.</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="policy-card hover-lift hover-glow" style="transition-delay: 0.2s;">
+                    <div class="policy-icon"><i class="fas fa-undo-alt"></i></div>
+                    <h3>3. Refund Policy</h3>
+                    <ul>
+                        <li>Refund will be processed within 7&ndash;14 working days.</li>
+                        <li>Visa fees, permits, helicopter tickets, and government charges are non-refundable.</li>
+                    </ul>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="policy-card hover-lift hover-glow">
+                    <div class="policy-icon"><i class="fas fa-passport"></i></div>
+                    <h3>4. Travel Documents</h3>
+                    <ul>
+                        <li>It is the traveler’s responsibility to carry valid ID proof, passport (for international
+                            yatras), permits, and medical certificates.</li>
+                        <li>Xourist is not responsible for denied entry due to incomplete documents.</li>
+                    </ul>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="policy-card hover-lift hover-glow" style="transition-delay: 0.1s;">
+                    <div class="policy-icon"><i class="fas fa-notes-medical"></i></div>
+                    <h3>5. Health & Fitness</h3>
+                    <ul>
+                        <li>Yatras like Kailash Mansarovar require good physical fitness.</li>
+                        <li>Travelers must disclose any medical conditions before booking.</li>
+                        <li>Xourist is not responsible for health issues during the journey.</li>
+                    </ul>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="policy-card hover-lift hover-glow" style="transition-delay: 0.2s;">
+                    <div class="policy-icon"><i class="fas fa-route"></i></div>
+                    <h3>6. Itinerary Changes</h3>
+                    <ul>
+                        <li>Xourist reserves the right to modify the itinerary due to weather, government orders, road
+                            conditions, or unforeseen circumstances.</li>
+                        <li>No refund will be provided for such changes.</li>
+                    </ul>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="policy-card hover-lift hover-glow">
+                    <div class="policy-icon"><i class="fas fa-balance-scale"></i></div>
+                    <h3>7. Liability</h3>
+                    <ul>
+                        <li>Xourist acts only as a tour organizer.</li>
+                        <li>We are not responsible for natural calamities, accidents, delays, political issues, or any
+                            force majeure situations.</li>
+                    </ul>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="policy-card hover-lift hover-glow" style="transition-delay: 0.1s;">
+                    <div class="policy-icon"><i class="fas fa-hotel"></i></div>
+                    <h3>8. Accommodation & Transport</h3>
+                    <ul>
+                        <li>Hotels are subject to availability. Similar category hotels may be provided if required.
+                        </li>
+                        <li>Transportation timing must be strictly followed by all passengers.</li>
+                    </ul>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="policy-card hover-lift hover-glow" style="transition-delay: 0.2s;">
+                    <div class="policy-icon"><i class="fas fa-praying-hands"></i></div>
+                    <h3>9. Code of Conduct</h3>
+                    <ul>
+                        <li>All travelers must maintain discipline and respect local customs, temple rules, and fellow
+                            passengers.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Acceptance of Terms -->
+            <div class="acceptance-banner hover-lift reveal-on-scroll">
+                <h2>Acceptance of Terms</h2>
+                <p>By booking with Xourist, you agree to all the above terms & conditions.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background-color: var(--color-secondary); color: rgba(255,255,255,0.6); padding: 4rem 0;">
+        <div class="container">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <img src="./src/assets/logo.jpg" alt="Xourist Logo"
+                        style="height: 50px; width: auto; border-radius: 5px;">
+                    <div>
+                        <h3 style="color: #fff; font-size: 1.5rem; letter-spacing: 2px;">XOURIST</h3>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Luxury Slow Travel in India</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 2rem;">
+                    <a href="https://www.instagram.com/xouristindia/" target="_blank" rel="noopener"
+                        style="color: rgba(255,255,255,0.8); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                </div>
+            </div>
+            <div
+                style="margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; font-size: 0.8rem; text-align: center;">
+                &copy; 2025 Xourist. All rights reserved.
+                <div class="developer-credit">
+                    Website Developed By <a href="https://www.linkedin.com/in/kanishk-a-bhardwaj/" target="_blank"
+                        class="developer-link">Kanishk BhardwaJ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/917678501937?text=Hello%20Xourist,%20I'm%20interested%20in%20planning%20a%20trip.%20%0A%0AName:%20[Your%20Name]%0ADates:%20[Preferred%20Dates]%0ATravelers:%20[Number%20of%20People]"
+        class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script type="module" src="./src/utils/main.js"></script>
+    <script type="module" src="./src/services/protection.js"></script>
+</body>
+
+</html>

@@ -2,18 +2,18 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
 export default defineConfig({
-  root: 'src/pages',
-  publicDir: '../../public',
+  root: '.',
+  publicDir: 'public',
   build: {
-    outDir: '../../dist',
+    outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'src/pages/index.html'),
-        charDham: resolve(__dirname, 'src/pages/char-dham.html'),
-        kailash: resolve(__dirname, 'src/pages/kailash.html'),
-        privacy: resolve(__dirname, 'src/pages/privacy.html'),
-        terms: resolve(__dirname, 'src/pages/terms.html'),
+        main: resolve(__dirname, 'index.html'),
+        charDham: resolve(__dirname, 'char-dham.html'),
+        kailash: resolve(__dirname, 'kailash.html'),
+        privacy: resolve(__dirname, 'privacy.html'),
+        terms: resolve(__dirname, 'terms.html'),
       }
     }
   },

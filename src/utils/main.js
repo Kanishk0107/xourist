@@ -349,70 +349,108 @@ document.addEventListener('DOMContentLoaded', () => {
     const slider = document.getElementById('gallerySlider');
 
     if (wrapper && slider) {
-            // Clone items for infinite illusion
-            const items = Array.from(slider.children);
-            items.forEach(item => {
-                const clone = item.cloneNode(true);
-                slider.appendChild(clone);
-            });
+        // Clone items for infinite illusion
+        const items = Array.from(slider.children);
+        items.forEach(item => {
+            const clone = item.cloneNode(true);
+            slider.appendChild(clone);
+        });
 
-            let isDown = false;
-            let startX;
-            let scrollLeft;
-            let animationId;
-            let isHovered = false;
-            let speed = 1.5; // Auto-scroll speed
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let animationId;
+        let isHovered = false;
+        let speed = 1.5; // Auto-scroll speed
 
-            // Auto-scroll function
-            const autoScroll = () => {
-                if (!isHovered && !isDown) {
-                    // If we've scrolled past the original set, reset to the beginning seamlessly
-                    if (wrapper.scrollLeft >= (slider.scrollWidth / 2)) {
-                        wrapper.scrollLeft = 0;
-                    } else {
-                        wrapper.scrollLeft += speed;
-                    }
+        // Auto-scroll function
+        const autoScroll = () => {
+            if (!isHovered && !isDown) {
+                // If we've scrolled past the original set, reset to the beginning seamlessly
+                if (wrapper.scrollLeft >= (slider.scrollWidth / 2)) {
+                    wrapper.scrollLeft = 0;
+                } else {
+                    wrapper.scrollLeft += speed;
                 }
-                animationId = requestAnimationFrame(autoScroll);
-            };
+            }
+            animationId = requestAnimationFrame(autoScroll);
+        };
 
-            // Start auto-scroll
-            autoScroll();
+        // Start auto-scroll
+        autoScroll();
 
-            // Pause on hover
-            wrapper.addEventListener('mouseenter', () => isHovered = true);
-            wrapper.addEventListener('mouseleave', () => {
-                isHovered = false;
-                isDown = false;
-                wrapper.classList.remove('active');
-            });
+        // Pause on hover
+        wrapper.addEventListener('mouseenter', () => isHovered = true);
+        wrapper.addEventListener('mouseleave', () => {
+            isHovered = false;
+            isDown = false;
+            wrapper.classList.remove('active');
+        });
 
-            // Manual Dragging (Mouse)
-            wrapper.addEventListener('mousedown', (e) => {
-                isDown = true;
-                wrapper.classList.add('active');
-                slider.style.cursor = 'grabbing';
-                startX = e.pageX - wrapper.offsetLeft;
-                scrollLeft = wrapper.scrollLeft;
-            });
+        // Manual Dragging (Mouse)
+        wrapper.addEventListener('mousedown', (e) => {
+            isDown = true;
+            wrapper.classList.add('active');
+            slider.style.cursor = 'grabbing';
+            startX = e.pageX - wrapper.offsetLeft;
+            scrollLeft = wrapper.scrollLeft;
+        });
 
-            wrapper.addEventListener('mouseup', () => {
-                isDown = false;
-                wrapper.classList.remove('active');
-                slider.style.cursor = 'grab';
-            });
+        wrapper.addEventListener('mouseup', () => {
+            isDown = false;
+            wrapper.classList.remove('active');
+            slider.style.cursor = 'grab';
+        });
 
-            wrapper.addEventListener('mousemove', (e) => {
-                if (!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - wrapper.offsetLeft;
-                const walk = (x - startX) * 2; // Scroll-fast multiplier
-                wrapper.scrollLeft = scrollLeft - walk;
-            });
+        wrapper.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - wrapper.offsetLeft;
+            const walk = (x - startX) * 2; // Scroll-fast multiplier
+            wrapper.scrollLeft = scrollLeft - walk;
+        });
 
-            // Manual Dragging (Touch/Mobile) is natively handled by touch scrolling because we use overflow-x: auto
-            // but we still need to pause auto-scroll when user interacts on mobile
-            wrapper.addEventListener('touchstart', () => isDown = true, { passive: true });
-            wrapper.addEventListener('touchend', () => isDown = false);
-        }
-    });
+        // Manual Dragging (Touch/Mobile) is natively handled by touch scrolling because we use overflow-x: auto
+        // but we still need to pause auto-scroll when user interacts on mobile
+        wrapper.addEventListener('touchstart', () => isDown = true, { passive: true });
+        wrapper.addEventListener('touchend', () => isDown = false);
+    }
+});
+
+// ========== SPIRITUAL JOURNEYS AUTO-SCROLL ==========
+document.addEventListener('DOMContentLoaded', () => {
+    const scroller = document.getElementById('spiritualScroller');
+    const wrapper = document.querySelector('.spiritual-slider-wrapper');
+
+    if (scroller && wrapper) {
+        let isHovered = false;
+        let isDown = false;
+        let speed = 1.0;
+
+        const autoScrollSpiritual = () => {
+            if (!isHovered && !isDown) {
+                // Smooth infinite scroll: reset to 0 when half the content is scrolled
+                if (scroller.scrollLeft > 0 && scroller.scrollLeft >= (scroller.scrollWidth / 2) - 10) {
+                    scroller.scrollLeft = 0;
+                } else {
+                    scroller.scrollLeft += speed;
+                }
+            }
+            requestAnimationFrame(autoScrollSpiritual);
+        };
+
+        // Slight delay to allow images to load their widths
+        setTimeout(() => {
+            autoScrollSpiritual();
+        }, 500);
+
+        // Pause on interactions
+        wrapper.addEventListener('mouseenter', () => isHovered = true);
+        wrapper.addEventListener('mouseleave', () => isHovered = false);
+
+        scroller.addEventListener('mousedown', () => isDown = true);
+        document.addEventListener('mouseup', () => isDown = false);
+        scroller.addEventListener('touchstart', () => isDown = true, { passive: true });
+        document.addEventListener('touchend', () => isDown = false);
+    }
+});

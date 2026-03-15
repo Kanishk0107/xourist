@@ -919,19 +919,23 @@ ul {
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
-.spiritual-scroller {
-    display: flex;
-    gap: 3rem;
-    overflow-x: auto;
-    padding: 2rem 5% 4rem 5%;
-    /* Side padding for scroll */
-    scrollbar-width: none;
-    /* Hide scrollbar */
-    justify-content: flex-start;
-    /* Ensure items start from left on mobile */
+.spiritual-slider-wrapper {
+    position: relative;
+    z-index: 2;
+    padding: 0 40px;
+    /* Space for buttons */
 }
 
-/* Hide scrollbar for Chrome/Safari/Opera */
+.spiritual-scroller {
+    display: flex;
+    overflow-x: auto;
+    padding: 2rem 0 4rem 0;
+    gap: 3rem;
+    scrollbar-width: none;
+    scroll-behavior: auto;
+    /* 'auto' for JS auto-scroll to avoid jarring behavior, we will use JS smooth drag/scroll if needed or CSS native smooth scroll on button clicks */
+}
+
 .spiritual-scroller::-webkit-scrollbar {
     display: none;
 }
@@ -957,12 +961,13 @@ ul {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.6;
-    transition: opacity 0.5s ease;
+    opacity: 0.9;
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .spiritual-item:hover img {
-    opacity: 0.8;
+    opacity: 1;
+    transform: scale(1.05);
 }
 
 .spiritual-info {
